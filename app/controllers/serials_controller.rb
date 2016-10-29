@@ -46,9 +46,7 @@ class SerialsController < ApplicationController
     @user = User.find(1)
     @user.serials.delete(@serial)
 
-    @serials = Serial.where(user_id: 1)
-
-    render json: @serials
+    render json: @serial
   end
 
   def user_serials
