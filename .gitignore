@@ -34,3 +34,6 @@ mobile/HackMobile/Assembly-CSharp-Editor.csproj
 mobile/HackMobile/Assembly-CSharp.csproj
 mobile/HackMobile/HackMobile.sln
 mobile/HackMobile/SpoilerMotivator.apk2
+mobile/HackMobile/Assets/Sprites.meta
+mobile/HackMobile/Assets/Sprites/panel.png.meta
+mobile/HackMobile/Assets/Sprites/plus1600.png.meta
