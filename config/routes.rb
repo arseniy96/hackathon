@@ -1,7 +1,6 @@
 Rails.application.routes.draw do  
   scope '/api' do
-    get 'serials/all', to: 'serials#all'
-    get 'serials/all/:id', to: 'serials#all_serials_id'
+    get 'user/serials', to: 'serials#user_serials'
     resources :tasks, except: [:new, :edit] do
       get 'complete', on: :member
     end

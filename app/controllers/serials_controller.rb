@@ -4,7 +4,7 @@ class SerialsController < ApplicationController
   # GET /serials
   # GET /serials.json
   def index
-    @serials = Serial.where(user_id: 1)
+    @serials = Serial.all
 
     render json: @serials
   end
@@ -19,7 +19,8 @@ class SerialsController < ApplicationController
   # POST /serials.json
   def create
     @user = User.find(1)
-    @serial = @user.serials.new(serial_params)
+    @serial = Serial.find(params[:id])
+    @user.serials << @serial
     if @serial.save
       render json: @serial, status: :created, location: @serial
     else
@@ -49,15 +50,20 @@ class SerialsController < ApplicationController
     render json: @serials
   end
 
-  def all
-    @allserials = Availableserial.all
-    render json: @allserials
+  def user_serials
+    @serials = Serial.where(user_id: 1)
+    render json: @serials
   end
 
-  def all_serials_id
-    @serial = Availableserial.find(params[:id])
-    render json: @serial
-  end
+  # def all
+  #   @allserials = Availableserial.all
+  #   render json: @allserials
+  # end
+  #
+  # def all_serials_id
+  #   @serial = Availableserial.find(params[:id])
+  #   render json: @serial
+  # end
 
   private
 
