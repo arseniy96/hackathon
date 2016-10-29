@@ -54,6 +54,11 @@ class SerialsController < ApplicationController
     render json: @allserials
   end
 
+  def all_serials_id
+    @serial = Availableserial.find(params[:id])
+    render json: @serial
+  end
+
   private
 
     def set_serial

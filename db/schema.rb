@@ -18,15 +18,17 @@ ActiveRecord::Schema.define(version: 20161029173222) do
 
   create_table "availableserials", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "serials", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id",    default: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -34,7 +36,8 @@ ActiveRecord::Schema.define(version: 20161029173222) do
     t.text     "description"
     t.integer  "date",        limit: 8
     t.boolean  "complete",              default: false
-    t.integer  "user_id",               default: 1
+    t.text     "spoiler"
+    t.integer  "user_id"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
