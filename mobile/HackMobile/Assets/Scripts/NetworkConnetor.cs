@@ -6,11 +6,11 @@ public class NetworkConnetor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(PostTask());
+	//	StartCoroutine(PostTask());
 		System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
 		int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
 
-		NotificationManager.Send (TimeSpan.FromSeconds (5), "You Failed", "John Snow will die",new Color(0, 0.6f, 1), NotificationIcon.Heart);
+	//	NotificationManager.Send (TimeSpan.FromSeconds (5), "You Failed", "John Snow will die",new Color(0, 0.6f, 1), NotificationIcon.Heart);
 	}
 	
 	// Update is called once per frame
@@ -60,7 +60,7 @@ public class NetworkConnetor : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator PostSerials(){
-		
-	}
+	//public IEnumerator PostSerials(){
+	//	
+	//}
 }
