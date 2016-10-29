@@ -43,7 +43,8 @@ class SerialsController < ApplicationController
   # DELETE /serials/1
   # DELETE /serials/1.json
   def destroy
-    @serial.destroy
+    @user = User.find(1)
+    @user.serials.delete(@serial)
 
     @serials = Serial.where(user_id: 1)
 
@@ -72,6 +73,6 @@ class SerialsController < ApplicationController
     end
 
     def serial_params
-      params.permit(:name)
+      params.permit(:name, :description)
     end
 end
