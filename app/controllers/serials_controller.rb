@@ -18,8 +18,8 @@ class SerialsController < ApplicationController
   # POST /serials
   # POST /serials.json
   def create
-    @serial = Serial.new(serial_params)
-
+    @user = User.find(1)
+    @serial = @user.serials.new(serial_params)
     if @serial.save
       render json: @serial, status: :created, location: @serial
     else
@@ -44,7 +44,7 @@ class SerialsController < ApplicationController
   def destroy
     @serial.destroy
 
-    @serials = Serial.all
+    @serials = Serial.where(user_id: 1)
 
     render json: @serials
   end

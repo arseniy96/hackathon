@@ -64,6 +64,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def complete
+    @task = Task.find(params[:id])
+    @task.destroy
+    @tasks = Task.all
+
+    render json: @tasks
+  end
+
   private
 
     def set_task

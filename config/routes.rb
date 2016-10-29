@@ -1,7 +1,9 @@
 Rails.application.routes.draw do  
   scope '/api' do
     get 'serials/all', to: 'serials#all'
-    resources :tasks, except: [:new, :edit]
+    resources :tasks, except: [:new, :edit] do
+      get 'complete', on: :member
+    end
     resources :serials, except: [:new, :edit]
     resources :users, except: [:new, :edit]
   end
