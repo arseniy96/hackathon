@@ -3,6 +3,7 @@ using System.Collections;
 
 public class NetworkConnetor : MonoBehaviour {
 
+	private GameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
@@ -10,6 +11,7 @@ public class NetworkConnetor : MonoBehaviour {
 		System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
 		int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
 		int curTime2 = (int)(System.DateTime.UtcNow.AddDays(1)-epochStart).TotalSeconds;
+		gameManager = GetComponent<GameManager> ();
 	//	NotificationManager.Send (TimeSpan.FromSeconds (5), "You Failed", "John Snow will die",new Color(0, 0.6f, 1), NotificationIcon.Heart);
 	}
 	
@@ -23,6 +25,7 @@ public class NetworkConnetor : MonoBehaviour {
 		yield return request;
 		if (request.error == null) {
 			Debug.Log (request.data);
+			gameManager.GenerateList(request.data);
 		} else {
 			Debug.Log (request.error);
 		}

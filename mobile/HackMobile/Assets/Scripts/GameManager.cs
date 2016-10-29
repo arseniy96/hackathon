@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour {
 	 operation = 0;
 		curui = "tasks";
 		netcon = GetComponent<NetworkConnetor> ();
+		StartCoroutine (netcon.GetTasksList());
+	}
+
+	public void GenerateList (string data){
+		Task[] tasks = JsonHelper.getJsonArray<Task>(data);
+		Debug.Log(tasks.Length);
 	}
 	
 	// Update is called once per frame
@@ -32,7 +38,7 @@ public class GameManager : MonoBehaviour {
 	
 	}
 	
-	public void CreateNewObject() {
+	public void CreateNewObject(string name,string desc,int date) {
 		Debug.Log("new obhewct");
 		
 		operation++;
@@ -69,9 +75,9 @@ public class GameManager : MonoBehaviour {
 		string[] timeArr = time.Split (new string[]{"."},StringSplitOptions.None);
 		string[] dateArr = dateStr.Split (new string[]{"."},StringSplitOptions.None);
 
-		int dateTimeSeconds =ConvertToUnixTimestamp( new System.DateTime (Int32.Parse (dateArr [2]), Int32.Parse (dateArr [1]), Int32.Parse (dateArr [0]),Int32.Parse (timeArr [0]), Int32.Parse (timeArr [1]), 0));
-		
-
+		DateTime dateTimeObj = 
+			new System.DateTime (Int32.Parse (dateArr [2]), Int32.Parse (dateArr [1]), Int32.Parse (dateArr [0]), Int32.Parse (timeArr [0]), Int32.Parse (timeArr [1]), 0);
+		int dateTimeSeconds =ConvertToUnixTimestamp(dateTimeObj);
 		StartCoroutine (netcon.PostTask(name.text,description.text,dateTimeSeconds));
 	}
 
