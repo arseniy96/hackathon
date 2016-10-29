@@ -43,6 +43,7 @@ class SerialsController < ApplicationController
   # DELETE /serials/1
   # DELETE /serials/1.json
   def destroy_serial
+    @serial = Serial.find(params[:id])
     @user = User.find(1)
     @user.serials.delete(@serial)
 
