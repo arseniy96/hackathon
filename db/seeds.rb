@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create!
 Task.create!(name: 'First task', description: 'Lorem ipsum', date: Time.now + 60000, complete: false, user_id: 1)
-Serial.create!(name: 'Game of Thrones')
-Serial.create!(name: 'The Bing Bang Theory')
-Serial.create!(name: 'Peaky Bblinders')
-Serial.create!(name: 'Walking Dead')
-Serial.create!(name: 'Preacher')
-Serial.create!(name: 'Star Wars')
+Serial.create!(name: 'Game of Thrones', description: 'Blabla')
+Serial.create!(name: 'The Bing Bang Theory', description: 'Lorem ipsum')
+Serial.create!(name: 'Peaky Bblinders', description: '132')
+Serial.create!(name: 'Walking Dead', description: '132')
+Serial.create!(name: 'Preacher', description: '132')
+Serial.create!(name: 'Star Wars', description: '132')
 
