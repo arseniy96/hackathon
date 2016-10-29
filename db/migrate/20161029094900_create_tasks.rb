@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :name
       t.text :description
-      t.integer :date
+      t.bigint :date
       t.boolean :complete, default: false 
       t.references :user, default: 1
 
