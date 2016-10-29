@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       get 'complete', on: :member
     end
     resources :serials, except: [:new, :edit]
-    resources :users, except: [:new, :edit]
+    resources :users, except: [:new, :edit] do
+      get 'destroy_serial', on: :member
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
