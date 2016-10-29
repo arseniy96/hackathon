@@ -9,7 +9,7 @@ public class NetworkConnetor : MonoBehaviour {
 	//	StartCoroutine(PostTask());
 		System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
 		int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
-
+		int curTime2 = (int)(System.DateTime.UtcNow.AddDays(1)-epochStart).TotalSeconds;
 	//	NotificationManager.Send (TimeSpan.FromSeconds (5), "You Failed", "John Snow will die",new Color(0, 0.6f, 1), NotificationIcon.Heart);
 	}
 	
