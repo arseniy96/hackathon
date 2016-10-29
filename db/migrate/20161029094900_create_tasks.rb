@@ -4,8 +4,8 @@ class CreateTasks < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :date
-      t.boolean :complete
-      t.references :user
+      t.boolean :complete, default: false 
+      t.references :user, default: 1
 
       t.timestamps null: false
     end

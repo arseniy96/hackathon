@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.where(user_id: 1)
+    delete_complited(@tasks)
 
     render json: @tasks
   end
@@ -31,10 +32,16 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    @tasks = Task.all
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      render json: @task
+      if @task.complete == true
+        @task.destroy
+        render json: @tasks
+      else
+        render json: @task
+      end
     else
       render json: @task.errors, status: :unprocessable_entity
     end
@@ -50,6 +57,14 @@ class TasksController < ApplicationController
     render json: @tasks
   end
 
+  def delete_complited(tasks)
+    tasks.each do |task|
+      if task.complete == true
+        task.destroy
+      end
+    end
+  end
+
   private
 
     def set_task
@@ -57,6 +72,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params[:task]
+      params.permit(:name, :description, :date, :complete)
     end
 end
