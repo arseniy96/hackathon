@@ -32,3 +32,5 @@ gem 'active_model_serializers'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'devise_token_auth'
 gem 'omniauth'
+
+gem "rails_12factor", group: :production
