@@ -18,8 +18,7 @@ class SerialsController < ApplicationController
   # POST /serials
   # POST /serials.json
   def create
-    @user = User.find(1)
-    @serial = @user.serials.new(serial_params)
+    @serial = Serial.new(serial_params)
 
     if @serial.save
       render json: @serial, status: :created, location: @serial
@@ -57,6 +56,6 @@ class SerialsController < ApplicationController
     end
 
     def serial_params
-      params.permit(:name)
+      params.permit(:name => [])
     end
 end
