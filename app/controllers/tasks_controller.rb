@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.where(user_id: 1)
 
     render json: @tasks
   end
@@ -18,7 +18,8 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @user = User.find(1)
+    @task = @user.tasks.new(task_params)
 
     if @task.save
       render json: @task, status: :created, location: @task
@@ -33,7 +34,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      head :no_content
+      render json: @task
     else
       render json: @task.errors, status: :unprocessable_entity
     end
@@ -43,8 +44,10 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
+    
+    @tasks = Task.all
 
-    head :no_content
+    render json: @tasks
   end
 
   private

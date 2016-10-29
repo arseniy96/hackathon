@@ -4,7 +4,7 @@ class SerialsController < ApplicationController
   # GET /serials
   # GET /serials.json
   def index
-    @serials = Serial.all
+    @serials = Serial.where(user_id: 1)
 
     render json: @serials
   end
@@ -18,7 +18,8 @@ class SerialsController < ApplicationController
   # POST /serials
   # POST /serials.json
   def create
-    @serial = Serial.new(serial_params)
+    @user = User.find(1)
+    @serial = @user.serials.new(serial_params)
 
     if @serial.save
       render json: @serial, status: :created, location: @serial
@@ -33,7 +34,7 @@ class SerialsController < ApplicationController
     @serial = Serial.find(params[:id])
 
     if @serial.update(serial_params)
-      head :no_content
+      render json: @serial
     else
       render json: @serial.errors, status: :unprocessable_entity
     end
@@ -44,7 +45,9 @@ class SerialsController < ApplicationController
   def destroy
     @serial.destroy
 
-    head :no_content
+    @serials = Serial.all
+
+    render json: @serials
   end
 
   private
