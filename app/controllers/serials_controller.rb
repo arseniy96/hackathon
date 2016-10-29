@@ -51,6 +51,7 @@ class SerialsController < ApplicationController
 
   def all
     @allserials = Availableserial.all
+    render json: @allserials
   end
 
   private
