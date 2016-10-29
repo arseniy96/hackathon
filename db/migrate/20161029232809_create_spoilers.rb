@@ -1,0 +1,11 @@
+class CreateSpoilers < ActiveRecord::Migration
+  def change
+    create_table :spoilers do |t|
+      t.text :text
+      t.boolean :is_sended
+      t.references :serial
+
+      t.timestamps null: false
+    end
+  end
+end
