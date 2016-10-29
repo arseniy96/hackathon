@@ -49,6 +49,10 @@ class SerialsController < ApplicationController
     render json: @serials
   end
 
+  def all
+    @allserials = Availableserial.all
+  end
+
   private
 
     def set_serial
@@ -56,6 +60,6 @@ class SerialsController < ApplicationController
     end
 
     def serial_params
-      params.permit(:name => [])
+      params.permit(:name)
     end
 end

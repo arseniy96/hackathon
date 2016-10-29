@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
   scope '/api' do
+    get 'serials/all', to: 'serials#all'
     resources :tasks, except: [:new, :edit]
     resources :serials, except: [:new, :edit]
     resources :users, except: [:new, :edit]
