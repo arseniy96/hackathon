@@ -57,6 +57,6 @@ class SerialsController < ApplicationController
     end
 
     def serial_params
-      params[:serial]
+      params.permit(:name)
     end
 end
