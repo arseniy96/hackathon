@@ -22,7 +22,7 @@ class SpoilersController < ApplicationController
     @spoiler = @serial.spoilers.new(spoiler_params)
 
     if @spoiler.save
-      render json: @spoiler, status: :created, location: @spoiler
+      render json: {"update": true}
     else
       render json: @spoiler.errors, status: :unprocessable_entity
     end
