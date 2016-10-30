@@ -18,7 +18,7 @@ class SpoilersController < ApplicationController
   # POST /spoilers
   # POST /spoilers.json
   def create
-    @serial = Serial.find(params[serial_id])
+    @serial = Serial.find(params[:serial_id])
     @spoiler = @serial.spoilers.new(spoiler_params)
 
     if @spoiler.save
