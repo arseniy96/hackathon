@@ -18,7 +18,8 @@ class SpoilersController < ApplicationController
   # POST /spoilers
   # POST /spoilers.json
   def create
-    @spoiler = Spoiler.new(spoiler_params)
+    @serial = Serial.find(params[serial_id])
+    @spoiler = @serial.spoilers.new(spoiler_params)
 
     if @spoiler.save
       render json: @spoiler, status: :created, location: @spoiler
@@ -54,6 +55,6 @@ class SpoilersController < ApplicationController
     end
 
     def spoiler_params
-      params[:spoiler]
+      params.permit(:text, :is_sended, :serial_id)
     end
 end

@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20161029232809) do
 
   create_table "spoilers", force: :cascade do |t|
     t.text     "text"
-    t.boolean  "is_sended"
+    t.boolean  "is_sended",  default: false
     t.integer  "serial_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "tasks", force: :cascade do |t|

@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     get 'user/serials', to: 'serials#user_serials'
     resources :tasks, except: [:new, :edit] do
       get 'complete', on: :member
-      resources :spoilers, only: [:create]
     end
     resources :serials, except: [:new, :edit] do
+      resources :spoilers, only: [:create]
       get 'destroy_serial', on: :member
     end
     resources :users, except: [:new, :edit]
