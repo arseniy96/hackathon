@@ -21,11 +21,12 @@ class TasksController < ApplicationController
   def create
     @user = User.find(1)
     @task = @user.tasks.new(task_params)
-    @spoiler = Spoiler.where(is_sended: false).first
-    @task.spoiler = @spoiler.text
+    @serials = @user.serials[rand(@user.serials.size)]
+    @spoiler = @serials.spoilers.where(is_sended: false).first
+    @task.spoiler = @spoiler.text if @spoiler
     if @task.save
-      @spoiler.is_sended = true
-      @spoiler.save
+      @spoiler.is_sended = true if @spoiler
+      @spoiler.save if @spoiler
       render json: @task, status: :created, location: @task
     else
       render json: @task.errors, status: :unprocessable_entity
