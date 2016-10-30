@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @user = User.find(1)
     @task = @user.tasks.new(task_params)
     @serials = @user.serials[rand(@user.serials.size)]
-    @spoiler = @serials.spoilers.where(is_sended: false).first
+    @spoiler = Spoiler.where(is_sended: false).first
     @task.spoiler = @spoiler.text if @spoiler
     if @task.save
       @spoiler.is_sended = true if @spoiler
