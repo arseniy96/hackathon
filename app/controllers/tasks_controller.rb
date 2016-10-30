@@ -21,7 +21,9 @@ class TasksController < ApplicationController
   def create
     @user = User.find(1)
     @task = @user.tasks.new(task_params)
-
+    @spoiler = Spoiler.where(is_sended: false).first
+    @task.spoiler = @spoiler.text
+    @spoiler.is_sended = true
     if @task.save
       render json: @task, status: :created, location: @task
     else
