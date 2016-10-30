@@ -23,8 +23,9 @@ class TasksController < ApplicationController
     @task = @user.tasks.new(task_params)
     @spoiler = Spoiler.where(is_sended: false).first
     @task.spoiler = @spoiler.text
-    @spoiler.is_sended = true
     if @task.save
+      @spoiler.is_sended = true
+      @spoiler.save
       render json: @task, status: :created, location: @task
     else
       render json: @task.errors, status: :unprocessable_entity
