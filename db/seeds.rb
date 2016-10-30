@@ -15,11 +15,11 @@ Serial.create!(name: 'Star Wars', description: 'Star Wars is an American epic sp
 
 Spoiler.create!(text: 'John Snow is alive', serial_id: 1)
 Spoiler.create!(text: 'Rob Stark was dead', serial_id: 1)
-Spoiler.create!(text: 'Game of thrones', serial_id: 1)
+Spoiler.create!(text: 'John Snow is cool guy', serial_id: 1)
 Spoiler.create!(text: "Darth Vader was Luke's father", serial_id: 6)
-Spoiler.create!(text: 'The Bing Bang Theory', serial_id: 2)
+Spoiler.create!(text: 'Sheldon is clever guy', serial_id: 2)
 Spoiler.create!(text: 'Peaky Blinders', serial_id: 3)
-Spoiler.create!(text: 'Walking Dead', serial_id: 4)
+Spoiler.create!(text: 'Zombie will die', serial_id: 4)
 Spoiler.create!(text: 'Preacher', serial_id: 5)
 
-Task.create!(name: 'First task', description: 'Lorem ipsum', date: Time.now + 60000, complete: false, user_id: 1, spoiler: 'John Snow is alive')
+Task.create!(name: 'First task', description: 'Lorem ipsum', date: Time.now + 60000, complete: false, user_id: 1, spoiler: 'John Snow')
