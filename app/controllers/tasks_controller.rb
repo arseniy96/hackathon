@@ -21,8 +21,9 @@ class TasksController < ApplicationController
   def create
     @user = User.find(1)
     @task = @user.tasks.new(task_params)
-    @serials = @user.serials[rand(@user.serials.size)]
-    @spoiler = Spoiler.where(is_sended: false).first
+    @serials = Serial.joins(:spoilers).where(spoilers: {is_sended: false})
+    @serial = @serials.where(user_id: 1).first if @serials
+    @spoiler = @serial.spoilers.first if @serial
     @task.spoiler = @spoiler.text if @spoiler
     if @task.save
       @spoiler.is_sended = true if @spoiler
