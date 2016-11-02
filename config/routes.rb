@@ -1,6 +1,8 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do
 
   scope '/api' do
+    mount_devise_token_auth_for 'User', at: 'auth'  
+
     get 'user/serials', to: 'serials#user_serials'
     resources :tasks, except: [:new, :edit] do
       get 'complete', on: :member
