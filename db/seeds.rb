@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!
+#User.create!
 Serial.create!(name: 'Game of Thrones', description: "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martin's series of fantasy novels, the first of which is A Game of Thrones.")
 Serial.create!(name: 'The Bing Bang Theory', description: "The show is primarily centered on five characters living in Pasadena, California: Leonard Hofstadter and Sheldon Cooper, both physicists at Caltech, who share an apartment; Penny, a waitress and aspiring actress who later becomes a pharmaceutical representative and who lives across the hall; and Leonard and Sheldon's similarly geeky and socially awkward friends and co-workers, aerospace engineer Howard Wolowitz and astrophysicist Raj Koothrappali. The geekiness and intellect of the four guys are contrasted for comic effect with Penny's social skills and common sense.")
 Serial.create!(name: 'Peaky Blinders', description: "Peaky Blinders is a television crime drama based upon the exploits of the Peaky Blinders gang, operating in Birmingham, England during the aftermath of the First World War.")
