@@ -1,5 +1,6 @@
 class SerialsController < ApplicationController
   before_action :set_serial, only: [:show, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index] 
 
   # GET /serials
   # GET /serials.json
