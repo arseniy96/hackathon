@@ -18,7 +18,7 @@ class SerialsController < ApplicationController
   # POST /serials
   # POST /serials.json
   def create
-    @user = User.find(1)
+    @user = curent_user
     @serial = Serial.find(params[:id])
     @user.serials << @serial
     if @serial.save
@@ -44,14 +44,14 @@ class SerialsController < ApplicationController
   # DELETE /serials/1.json
   def destroy_serial
     @serial = Serial.find(params[:id])
-    @user = User.find(1)
+    @user = current_user
     @user.serials.delete(@serial)
 
     render json: @serial
   end
 
   def user_serials
-    @serials = Serial.where(user_id: 1)
+    @serials = Serial.where(user_id: current_user.id)
     render json: @serials
   end
 

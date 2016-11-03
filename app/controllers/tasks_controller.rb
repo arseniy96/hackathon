@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(user_id: 1)
+    @tasks = Task.where(user_id: current_user.id)
     delete_complited(@tasks)
 
     render json: @tasks
@@ -19,10 +19,10 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @user = User.find(1)
+    @user = current_user
     @task = @user.tasks.new(task_params)
     @serials = Serial.joins(:spoilers).where(spoilers: {is_sended: false})
-    @serial = @serials.where(user_id: 1).first if @serials
+    @serial = @serials.where(user_id: current_user.id).first if @serials
     @spoiler = @serial.spoilers.where(is_sended: false).first if @serial
     @task.spoiler = @spoiler.text if @spoiler
     if @task.save
